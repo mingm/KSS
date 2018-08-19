@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+			'emp_id' => '900001',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'first_name' => 'admin',
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
             'updated_by' => 'data_dump',
         ]);
         DB::table('users')->insert([
+			'emp_id' => '200001',
             'email' => 'claim@gmail.com',
             'password' => bcrypt('password'),
             'first_name' => 'claim',
@@ -28,6 +30,7 @@ class UsersTableSeeder extends Seeder
             'updated_by' => 'data_dump',
         ]);
         DB::table('users')->insert([
+			'emp_id' => '300001',
             'email' => 'bill@gmail.com',
             'password' => bcrypt('password'),
             'first_name' => 'bill',
@@ -36,6 +39,7 @@ class UsersTableSeeder extends Seeder
             'updated_by' => 'data_dump',
         ]);
         DB::table('users')->insert([
+			'emp_id' => '800001',
             'email' => 'manager@gmail.com',
             'password' => bcrypt('password'),
             'first_name' => 'manager',
