@@ -1,0 +1,16 @@
+
+SOURCE CODE:
+SSH: git@github.com:mingm/KSS.git
+HTTP: https://github.com/mingm/KSS.git
+
+Project Parameter
+.env
+
+After check out source code
+1. copy .env to root folder (.env file available at google drive)
+2. start VM (Homestead) "vagrant up"
+3. Drop all tables (SQL tool to remove all tables)
+4. run command at root folder, command is "composer update"
+5. run command at root folder, command is "php artisan migrate"
+6. run command at root folder, command is "php artisan db:seed"
+7. browser the website
