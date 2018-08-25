@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
 			$table->integer('category_id')->unsigned();
             $table->string('name');
             $table->string('model');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();

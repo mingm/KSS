@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'admin',
             'created_by' => 'data_dump',
             'updated_by' => 'data_dump',
+			'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         DB::table('users')->insert([
 			'emp_id' => '200001',
@@ -28,6 +30,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'claim',
             'created_by' => 'data_dump',
             'updated_by' => 'data_dump',
+			'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         DB::table('users')->insert([
 			'emp_id' => '300001',
@@ -37,6 +40,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'bill',
             'created_by' => 'data_dump',
             'updated_by' => 'data_dump',
+			'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         DB::table('users')->insert([
 			'emp_id' => '800001',
@@ -46,6 +50,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'manager',
             'created_by' => 'data_dump',
             'updated_by' => 'data_dump',
+			'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 		
     }
