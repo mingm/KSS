@@ -1,88 +1,91 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+	<head>
+		<title><!--BLANL--></title>
+		
+		<!-- CSRF Token -->
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-	<!-- Bootstrap core CSS-->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="index.html">KSS SERVICE SYSTEM</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">การตั้งค่า</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">ออกจากระบบ</a>
-          </div>
-        </li>
-      </ul>
-
-    </nav>
-	
+		<!-- bootstrap -->
+			<link rel="stylesheet" href="{{ asset('assests/bootstrap/css/bootstrap.min.css') }}">
+		<!-- bootstrap theme-->
+			<link rel="stylesheet" href="{{ asset('assests/bootstrap/css/bootstrap-theme.min.css') }}">
+		<!-- font awesome -->
+			<link rel="stylesheet" href="{{ asset('assests/font-awesome/css/font-awesome.min.css') }}">
+		<!-- custom css -->
+			<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
+		<!-- jquery -->
+			<script src="{{ asset('assests/jquery/jquery.min.js') }}"></script>
+		<!-- jquery ui -->
+			<link rel="stylesheet" href="{{ asset('assests/jquery-ui/jquery-ui.min.css') }}">
+			<script src="{{ asset('assests/jquery-ui/jquery-ui.min.js') }}"></script>
+		<!-- bootstrap js -->
+			<script src="{{ asset('assests/bootstrap/js/bootstrap.min.js') }}"></script>
+	</head>
+	<body>
 	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-		@csrf
-	</form>
-	
+        @csrf
+    </form>
+
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+
+				<ul class="nav navbar-nav navbar-right">        
+
+					<li id="navDashboard"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>  แผงควบคุม</a></li>        
+
+					<li class="dropdown" id="navData">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-folder-open"></i>    ตั้งค่าข้อมูล  <span class="caret"></span></a>
+						<ul class="dropdown-menu">            
+							<li id="navBrand"><a href="#"> <i class="glyphicon glyphicon-plus"></i> เพิ่มแบรนด์สินค้า</a></li>            
+							<li id="navCategories"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มหมวดหมู่สินค้า</a></li>
+							<li id="navProduct"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มสินค้า</a></li>
+							<div class="divider"></div>
+								<li id="navVendors"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  ผู้จัดจำหน่าย</a></li> 
+							<div class="dropdown-divider"></div>  
+								<li id="navCustomers"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  ข้อมูลลูกค้า</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown" id="navClaim">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-th-large"></i>  ระบบเคลมสินค้า  <span class="caret"></span></a>
+						<ul class="dropdown-menu">            
+							<li id="navBrand"><a href="#"> <i class="glyphicon glyphicon-edit"></i> เพิ่มรายการเคลมสินค้า</a></li>   
+								<div class="divider"></div>							
+							<li id="navCategories"><a href="#"> <i class="glyphicon glyphicon-edit"></i>  เพิ่มรายการส่งเคลมสินค้า</a></li>
+								<div class="divider"></div>  
+						</ul>
+					</li> 					
+
+					<li id="navReport"><a href="#"> <i class="glyphicon glyphicon-check"></i> รายงาน </a></li>
+					
+					<li class="dropdown" id="navSetting">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
+						<ul class="dropdown-menu">            
+							<li id="topNavSetting"><a href="#"> <i class="glyphicon glyphicon-wrench"></i> การตั้งค่า</a></li>            
+							<li id="topNavLogout"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="glyphicon glyphicon-log-out"></i> ออกจากระบบ</a></li>            
+						</ul>
+					</li>           
+				</ul>
+				
+			</div><!-- /.navbar-collapse -->
+			
+		</div><!-- /.container-fluid -->
+		
+	</nav>
+
 	@yield('content')
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">ต้องการออกจากระบบ</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">คลิกปุ่ม "ออกจากระบบ" เพื่อสิ้นสุดการทำงาน</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">ยกเลิก</button>
-            <a class="btn btn-primary" href="{{ route('logout') }}" 
-				onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ออกจากระบบ</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-	<!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('js/sb-admin.min.js') }}"></script>
-</body>
+	</body>
 </html>
