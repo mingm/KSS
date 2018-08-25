@@ -48,7 +48,7 @@
 					<li class="dropdown" id="navData">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-folder-open"></i>    ตั้งค่าข้อมูล  <span class="caret"></span></a>
 						<ul class="dropdown-menu">            
-							<li id="navBrand"><a href="#"> <i class="glyphicon glyphicon-plus"></i> เพิ่มแบรนด์สินค้า</a></li>            
+							<li id="navBrand"><a href="/brands"> <i class="glyphicon glyphicon-plus"></i> เพิ่มแบรนด์สินค้า</a></li>            
 							<li id="navCategories"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มหมวดหมู่สินค้า</a></li>
 							<li id="navProduct"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มสินค้า</a></li>
 							<div class="divider"></div>
