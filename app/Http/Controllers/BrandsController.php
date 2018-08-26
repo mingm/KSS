@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class BrandsController extends Controller
 {
+	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +25,7 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        return view('brands.index', ['brands' => Brand::all()]);
+        return view('brands.index', ['brands' => Brand::paginate(15)]);
     }
 
     /**
@@ -29,61 +39,12 @@ class BrandsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(BrandPost $request)
-    {
-        //
-		$brand = Brand::create($request->all());
-		$brand->save();
-		
-		return view('brands.index', ['brands' => Brand::all()]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Brand  $brand
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Brand $brand)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
     public function edit(Brand $brand)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $brand
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Brand $brand)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Brand  $brand
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Brand $brand)
     {
         //
     }
