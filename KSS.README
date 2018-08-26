@@ -12,5 +12,6 @@ After check out source code
 3. Drop all tables (SQL tool to remove all tables)
 4. run command at root folder, command is "composer update"
 5. run command at root folder, command is "php artisan migrate"
-6. run command at root folder, command is "php artisan db:seed"
-7. browser the website
+6. run command at root folder, command is "php artisan passport:install"
+7. run command at root folder, command is "php artisan db:seed"
+8. browser the website
