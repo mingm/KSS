@@ -92,7 +92,7 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> ระบบข้อมูลสินค้า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="brands-list.html">เพิ่มแบรนด์สินค้า</a>
+                                    <a href="{{ url('brands') }}">เพิ่มแบรนด์สินค้า</a>
                                 </li>
                                 <li>
                                     <a href="categories-list.html">เพิ่มหมวดหมู่สินค้า</a>
