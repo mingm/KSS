@@ -76,7 +76,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> ระบบข้อมูลลูกค้า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="customers-list.html">เพิ่มข้อมูลลูกค้า</a>
+                                    <a href="{{ url('customers') }}">เพิ่มข้อมูลลูกค้า</a>
 								</li>
                             </ul>
                         </li>
