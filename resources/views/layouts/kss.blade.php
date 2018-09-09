@@ -1,91 +1,144 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title><!--BLANL--></title>
-		
-		<!-- CSRF Token -->
-		<meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-		<!-- bootstrap -->
-			<link rel="stylesheet" href="{{ asset('assests/bootstrap/css/bootstrap.min.css') }}">
-		<!-- bootstrap theme-->
-			<link rel="stylesheet" href="{{ asset('assests/bootstrap/css/bootstrap-theme.min.css') }}">
-		<!-- font awesome -->
-			<link rel="stylesheet" href="{{ asset('assests/font-awesome/css/font-awesome.min.css') }}">
-		<!-- custom css -->
-			<link rel="stylesheet" href="{{ asset('custom/css/custom.css') }}">
-		<!-- jquery -->
-			<script src="{{ asset('assests/jquery/jquery.min.js') }}"></script>
-		<!-- jquery ui -->
-			<link rel="stylesheet" href="{{ asset('assests/jquery-ui/jquery-ui.min.css') }}">
-			<script src="{{ asset('assests/jquery-ui/jquery-ui.min.js') }}"></script>
-		<!-- bootstrap js -->
-			<script src="{{ asset('assests/bootstrap/js/bootstrap.min.js') }}"></script>
-	</head>
-	<body>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+	<!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('dist/css/sb-admin-2.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
 	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
 
-	<nav class="navbar navbar-default navbar-static-top">
-		<div class="container">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">KSS SERVICE SYSTEM</a>
+            </div>
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="setting.htnl"><i class="fa fa-gear fa-fw"></i>การตั้งค่า</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</a></li>      
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+                    </ul>
+                </li>
+            </ul>
 
-				<ul class="nav navbar-nav navbar-right">        
+			<!-- Menu Sidebar -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> แผงควบคุม</a>
+                        </li>
+                        <li>
+                            <a href="claim-product.html"><i class="fa fa-plus-circle"></i> เพิ่มรายการเคลมสินค้า</a>
+                        </li>
+                        <li>
+                            <a href="send-vendors.html"><i class="fa fa-plus-square"></i> เพิ่มรายการส่งเคลมสินค้า</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> ระบบข้อมูลลูกค้า<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="customers-list.html">เพิ่มข้อมูลลูกค้า</a>
+								</li>
+                            </ul>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> ระบบข้อมูลผู้นำเข้า<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="vendors-list.html">เพิ่มข้อมูลผู้นำเข้า</a>
+								</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> ระบบข้อมูลสินค้า<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="brands-list.html">เพิ่มแบรนด์สินค้า</a>
+                                </li>
+                                <li>
+                                    <a href="categories-list.html">เพิ่มหมวดหมู่สินค้า</a>
+                                </li>
+                                <li>
+                                    <a href="products-list.html">เพิ่มสินค้า</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ระบบรายงาน<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">รายการ 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">รายการ 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">รายการ 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-					<li id="navDashboard"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>  แผงควบคุม</a></li>        
+		@yield('content')
+        <!-- /#page-wrapper -->
 
-					<li class="dropdown" id="navData">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-folder-open"></i>    ตั้งค่าข้อมูล  <span class="caret"></span></a>
-						<ul class="dropdown-menu">            
-							<li id="navBrand"><a href="/brands"> <i class="glyphicon glyphicon-plus"></i> เพิ่มแบรนด์สินค้า</a></li>            
-							<li id="navCategories"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มหมวดหมู่สินค้า</a></li>
-							<li id="navProduct"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  เพิ่มสินค้า</a></li>
-							<div class="divider"></div>
-								<li id="navVendors"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  ผู้จัดจำหน่าย</a></li> 
-							<div class="dropdown-divider"></div>  
-								<li id="navCustomers"><a href="#"> <i class="glyphicon glyphicon-plus"></i>  ข้อมูลลูกค้า</a></li>
-						</ul>
-					</li>
+    </div>
+    <!-- /#wrapper -->
 
-					<li class="dropdown" id="navClaim">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-th-large"></i>  ระบบเคลมสินค้า  <span class="caret"></span></a>
-						<ul class="dropdown-menu">            
-							<li id="navBrand"><a href="#"> <i class="glyphicon glyphicon-edit"></i> เพิ่มรายการเคลมสินค้า</a></li>   
-								<div class="divider"></div>							
-							<li id="navCategories"><a href="#"> <i class="glyphicon glyphicon-edit"></i>  เพิ่มรายการส่งเคลมสินค้า</a></li>
-								<div class="divider"></div>  
-						</ul>
-					</li> 					
+    <!-- jQuery -->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 
-					<li id="navReport"><a href="#"> <i class="glyphicon glyphicon-check"></i> รายงาน </a></li>
-					
-					<li class="dropdown" id="navSetting">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> <span class="caret"></span></a>
-						<ul class="dropdown-menu">            
-							<li id="topNavSetting"><a href="#"> <i class="glyphicon glyphicon-wrench"></i> การตั้งค่า</a></li>            
-							<li id="topNavLogout"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="glyphicon glyphicon-log-out"></i> ออกจากระบบ</a></li>            
-						</ul>
-					</li>           
-				</ul>
-				
-			</div><!-- /.navbar-collapse -->
-			
-		</div><!-- /.container-fluid -->
-		
-	</nav>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
-	@yield('content')
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{ asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
-	</body>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('dist/js/sb-admin-2.js') }}"></script>
+
+</body>
+
 </html>
