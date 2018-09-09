@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Brand;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BrandPost extends FormRequest
+class VendorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,21 +34,22 @@ class BrandPost extends FormRequest
 			case 'POST':
 			{
 				return [
-					'name' => 'required|unique:brands|max:255',
-					'status' => 'required|in:Active,Inactive',
+					'name' => 'required|unique:vendors|max:255',
+					'details' => 'required|max:255',
+					'phone' => 'required'
 				];
 			}
 			case 'PUT':
 			case 'PATCH':
 			{
-				$brand = Brand::find($this->brand->id);
+				$vendor = vendor::find($this->vendor->id);
 				return [
-					'name' => 'required|max:255|unique:brands,name,'.$brand->id,
-					'status' => 'required|in:Active,Inactive',
+					'name' => 'required|max:255|unique:vendors,name,'.$vendor->id,
+					'status' => 'required|max:255',
+					'phone' => 'required'
 				];
 			}
 			default:break;
 		}
-		
     }
 }

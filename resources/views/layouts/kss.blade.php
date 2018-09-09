@@ -84,7 +84,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i> ระบบข้อมูลผู้นำเข้า<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="vendors-list.html">เพิ่มข้อมูลผู้นำเข้า</a>
+                                    <a href="{{ url('vendors') }}">เพิ่มข้อมูลผู้นำเข้า</a>
 								</li>
                             </ul>
                         </li>
