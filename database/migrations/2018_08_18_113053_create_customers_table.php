@@ -20,7 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('last_name');
             $table->string('address');
             $table->string('phone');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();
