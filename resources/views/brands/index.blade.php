@@ -44,13 +44,11 @@
 										<tr>
 											<td class="text-center">{{ $loop->iteration + (($brands->currentPage() - 1) * $brands->perPage()) }}</td>
 											<td>{{ $brand->name }}</td>
-											<td>
 											@if ($brand->status === 'Active')
 												<td class="text-center"><label class="label label-success">เปิดการใช้งาน</label></td>
 											@else
 												<td class="text-center"><label class="label label-danger">ยังไม่เปิดใช้งาน</label></td>
-											@endif
-											</td>											
+											@endif									
 											<td class="text-center">
 												<div class="btn-group">
 													<a href="{{ url('/brands/' . $brand->id ) }}" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-log-in"></i></a>
