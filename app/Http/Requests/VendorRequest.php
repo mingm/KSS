@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+
+use App\Vendor;
 use Illuminate\Foundation\Http\FormRequest;
 
 class VendorRequest extends FormRequest
@@ -42,7 +44,7 @@ class VendorRequest extends FormRequest
 			case 'PUT':
 			case 'PATCH':
 			{
-				$vendor = vendor::find($this->vendor->id);
+				$vendor = Vendor::find($this->vendor->id);
 				return [
 					'name' => 'required|max:255|unique:vendors,name,'.$vendor->id,
 					'status' => 'required|max:255',
