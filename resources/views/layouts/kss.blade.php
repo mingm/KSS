@@ -95,7 +95,10 @@
                                     <a href="{{ url('brands') }}">เพิ่มแบรนด์สินค้า</a>
                                 </li>
                                 <li>
-                                    <a href="categories-list.html">เพิ่มหมวดหมู่สินค้า</a>
+                                    <a href="{{ url('categories') }}">เพิ่มหมวดหมู่สินค้า</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('treeview') }}">ทดสอบหมวดหมู่สินค้า</a>
                                 </li>
                                 <li>
                                     <a href="products-list.html">เพิ่มสินค้า</a>
@@ -139,6 +142,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('dist/js/sb-admin-2.js') }}"></script>
 
+	@yield('endjavascript')
+	
 </body>
 
 </html>
