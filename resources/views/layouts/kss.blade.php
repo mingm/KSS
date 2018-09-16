@@ -98,9 +98,6 @@
                                     <a href="{{ url('categories') }}">เพิ่มหมวดหมู่สินค้า</a>
                                 </li>
                                 <li>
-                                    <a href="{{ url('treeview') }}">ทดสอบหมวดหมู่สินค้า</a>
-                                </li>
-                                <li>
                                     <a href="products-list.html">เพิ่มสินค้า</a>
                                 </li>
                             </ul>
