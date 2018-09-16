@@ -54,9 +54,14 @@ class CategoriesController extends Controller
 		$category = new Category;
 		$category->name = $request->name;
 		$category->parent_id = $request->parentId;
+		$category->level = $this->getLevel($request->parentId);
 		
-		if ($request->isRoot)
+		//Log::info('Level: ' . $this->getLevel($request->parentId));
+		
+		if ($request->isRoot) {
 			$category->parent_id = 0;
+			$category->level = 1;
+		}
 		
 		$category->save();
 		
@@ -145,5 +150,21 @@ class CategoriesController extends Controller
 		
 		$json_data = substr($json_data, 0, -1);
 		return '[' . $json_data . ']';
+	}
+	
+	private function getLevel($catId) {
+		$category = Category::find($catId);
+		
+		return $this->findRoot($category, 1) + 1;
+	}
+	
+	private function findRoot($category, $level){
+		
+		$level++;
+		
+		if ($category->parent->parent_id == 0)
+			return $level;
+		
+		return $this->findRoot($category->parent, $level);
 	}
 }
