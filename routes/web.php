@@ -27,5 +27,6 @@ Route::resources([
     'brands' => 'BrandsController',
 	'vendors' => 'VendorsController',
 	'customers' => 'CustomersController',
-	'categories' => 'CategoriesController'
+	'categories' => 'CategoriesController',
+	'products' => 'ProductsController'
 ]);
