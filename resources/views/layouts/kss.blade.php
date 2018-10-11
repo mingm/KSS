@@ -24,7 +24,7 @@
 
     <!-- Custom Fonts -->
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
+	
 </head>
 
 <body>
@@ -67,7 +67,7 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> แผงควบคุม</a>
                         </li>
                         <li>
-                            <a href="claim-product.html"><i class="fa fa-plus-circle"></i> เพิ่มรายการเคลมสินค้า</a>
+                            <a href="{{ url('claims') }}"><i class="fa fa-plus-circle"></i> เพิ่มรายการเคลมสินค้า</a>
                         </li>
                         <li>
                             <a href="send-vendors.html"><i class="fa fa-plus-square"></i> เพิ่มรายการส่งเคลมสินค้า</a>

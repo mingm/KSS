@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\ClaimProduct;
+use App\Customer;
 use Illuminate\Database\Eloquent\Model;
 
 class Claim extends Model
@@ -18,14 +20,17 @@ class Claim extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'customer_id', 'status', 'note', 'created_by'
-    ];
+    protected $fillable = ['status', 'note', 'created_by'];
 	
 	public $timestamps = false;
 	
+	public function customer()
+    {
+        return $this->hasOne('Customer', 'id', 'customer_id');
+    }
+	
 	public function claimProducts() {
-        return $this->belongsToMany('App\ClaimProduct', 'claim_product');
+        return $this->belongsToMany('ClaimProduct', 'claim_product');
 	}
 
     public static function boot()
