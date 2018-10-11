@@ -52,6 +52,7 @@ class CustomersController extends Controller
     {
         //
 		$user = Auth::user();
+		$isClaim = $request->isClaim;
 		
 		$customer = new Customer;
 		$customer->email = $request->email;
@@ -65,7 +66,9 @@ class CustomersController extends Controller
 		$customer->updated_by = $user->first_name;
 		
 		$customer->save();
-		
+		if (isset($isClaim)){
+			return redirect()->action('ClaimsWorkFlowController', ['step' => 2, 'customer' => $customer]);	
+		}
         return redirect()->action('CustomersController@index');
     }
 

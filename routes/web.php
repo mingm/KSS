@@ -30,3 +30,8 @@ Route::resources([
 	'categories' => 'CategoriesController',
 	'products' => 'ProductsController'
 ]);
+
+Route::get('/claims', 'ClaimsController@index')->name('claim');
+
+Route::get('/claims/create', 'ClaimsWorkFlowController');
+Route::post('/claims/create', 'ClaimsWorkFlowController');

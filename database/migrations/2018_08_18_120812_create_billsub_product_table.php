@@ -16,9 +16,11 @@ class CreateBillsubProductTable extends Migration
         Schema::create('billsub_product', function (Blueprint $table) {
             $table->increments('id');
 			$table->integer('billsub_id')->unsigned();
+			$table->integer('claim_id')->unsigned();
 			$table->integer('product_id')->unsigned();
             $table->string('serial_number');
 			$table->foreign('billsub_id')->references('id')->on('billsub');
+			$table->foreign('claim_id')->references('id')->on('claims');
 			$table->foreign('product_id')->references('id')->on('products');
         });
     }
