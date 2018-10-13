@@ -59,7 +59,7 @@
 								<div class="form-group">
 									<label class="col-lg-2 control-label text-info">ซีเรียลนัมเบอร์</label>
 									<div class="col-lg-6">
-										<input type="text" class="form-control" id="serialNumber" name="serialNumber" placeholder="ซีเรียลนัมเบอร์" value="{{ $claimProduct->serial_number }}">
+										<input type="text" class="form-control" id="serialNumber" name="serialNumber" placeholder="ซีเรียลนัมเบอร์" value="{{ $claimProduct->serial_number }}" required>
 									</div>
 								</div>
 							</div>
