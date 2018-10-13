@@ -33,4 +33,8 @@ class ClaimProduct extends Model
     {
         return $this->belongsTo('App\Claim');
     }
+	
+	public function claimProductActions() {
+        return $this->hasMany('App\ClaimProductAction');
+	}
 }

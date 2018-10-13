@@ -96,7 +96,9 @@
 									<div class="col-lg-4">
 									<form class="form-horizontal" action="{{ url('claims/create?step=5') }}" method="POST">
 									@csrf
+									@if (count($claimProductAll) > 0)
 										<button type="submit" class="btn btn-primary" id="" data-loading-text="Loading..." autocomplete="off">บันทึกรายการ</button>
+									@endif
 										<a href="{{ url('claims/') }}"  class="btn btn-default">กลับ</a>
 									</form>
 									</div>
