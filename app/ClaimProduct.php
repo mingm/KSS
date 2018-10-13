@@ -11,7 +11,7 @@ class ClaimProduct extends Model
      *
      * @var string
      */
-    protected $table = 'claim_product';
+    protected $table = 'claims_product';
 	
 	/**
      * The attributes that are mass assignable.
@@ -23,4 +23,14 @@ class ClaimProduct extends Model
     ];
 	
 	public $timestamps = false;
+	
+	public function product()
+    {
+        return $this->hasOne('App\Product', 'id', 'product_id');
+    }
+
+    public function claim()
+    {
+        return $this->belongsTo('App\Claim');
+    }
 }

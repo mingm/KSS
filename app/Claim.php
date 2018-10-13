@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\ClaimProduct;
-use App\Customer;
 use Illuminate\Database\Eloquent\Model;
 
 class Claim extends Model
@@ -26,11 +24,11 @@ class Claim extends Model
 	
 	public function customer()
     {
-        return $this->hasOne('Customer', 'id', 'customer_id');
+        return $this->hasOne('App\Customer', 'id', 'customer_id');
     }
 	
 	public function claimProducts() {
-        return $this->belongsToMany('ClaimProduct', 'claim_product');
+        return $this->hasMany('App\ClaimProduct');
 	}
 
     public static function boot()

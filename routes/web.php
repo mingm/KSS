@@ -32,6 +32,7 @@ Route::resources([
 ]);
 
 Route::get('/claims', 'ClaimsController@index')->name('claim');
+Route::get('/claims/print/{id}', 'ClaimsController@printClaim')->name('claimprint');
 
 Route::get('/claims/create', 'ClaimsWorkFlowController');
 Route::post('/claims/create', 'ClaimsWorkFlowController');
