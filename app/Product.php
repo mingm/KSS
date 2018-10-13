@@ -21,4 +21,14 @@ class Product extends Model
     protected $fillable = [
         'brand_id', 'vendor_id', 'name', 'model', 'description', 'created_by', 'updated_by'
     ];
+	
+	public function brand()
+    {
+        return $this->hasOne('App\Brand', 'id', 'brand_id');
+    }
+	
+	public function vendor()
+    {
+        return $this->hasOne('App\Vendor', 'id', 'vendor_id');
+    }
 }

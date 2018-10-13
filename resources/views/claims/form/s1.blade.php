@@ -75,7 +75,7 @@
 												<td>{{ $customer->phone}}</td>
 												<td class="text-center">
 													<div class="btn-group">
-														<a href="{{ url('/customers/' . $customer->id ) }}" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-log-in"></i></a>
+														<a href="{{ url('/claims/create?step=2&customer=' . $customer->id ) }}" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-log-in"></i></a>
 													</div>
 												</td>
 											</tr>
@@ -83,6 +83,11 @@
 											</tbody>
 										</table>
 									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									{{ $customers->appends(['step' => '2'])->links('shared.pagination') }}
 								</div>
 							</div>
 							@else

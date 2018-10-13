@@ -45,14 +45,14 @@
 										<td class="text-center">{{ $loop->iteration + (($claims->currentPage() - 1) * $claims->perPage()) }}</td>
 										<td>{{ $claim->claim_code}}</td>
 										@if ($claim->status === 'Completed')
-										<td><label class="label label-danger">ยังไม่เรียบร้อย</label></td>
-										@else
 										<td><label class="label label-danger">เรียบร้อย</label></td>
+										@else
+										<td><label class="label label-danger">ยังไม่เรียบร้อย</label></td>
 										@endif	
 										<td class="text-center">
 											<div class="btn-group">
-												<button class="btn btn-xs btn-info" data-toggle="tooltip" title="View"><i class="glyphicon glyphicon-eye-open"></i></button>
-												<button class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-log-in"></i></button>
+												<a href="{{ url('claims/print/' . $claim->id ) }}" target="_blank" class="btn btn-xs btn-info" title="Print"><i class="glyphicon glyphicon-eye-open"></i></a>
+												<a href="{{ url('claims/create?claimId=' . $claim->id ) }}"  class="btn btn-xs btn-warning" title="Edit"><i class="glyphicon glyphicon-log-in"></i></a>
 											</div>
 										</td>
 									</tr>
