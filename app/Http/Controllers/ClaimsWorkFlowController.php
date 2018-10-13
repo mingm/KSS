@@ -6,6 +6,7 @@ use App\Brand;
 use App\Category;
 use App\Claim;
 use App\ClaimProduct;
+use App\ClaimProductAction;
 use App\Customer;
 use App\KSSNumber;
 use App\Product;
@@ -129,18 +130,37 @@ class ClaimsWorkFlowController extends Controller
 			{
 				Log::info('Step #5 - Save claim');
 				
-				$user = Auth::user();		
-				$claimNumber = KSSNumber::where('key', $this->CONS_CLAIM_NUMBER_KEY)->first();
+				$user = Auth::user();
+				
 				$claim = $request->session()->get($this->SESSION_CLAIM_KEY);
 				$claimProductAll = $request->session()->get($this->SESSION_SELECTED_PRODUCT_KEY);
 				
-				$claim->created_by = $user->first_name;
-				$claim->claim_code = 'C' . str_pad($claimNumber->number, 9, "0", STR_PAD_LEFT);
+				if (!isset($claim->claim_code)) {
+					$claimNumber = KSSNumber::where('key', $this->CONS_CLAIM_NUMBER_KEY)->first();
+					$claimNumber->number += 1;
+					$claimNumber->save();
+					$claim->claim_code = 'C' . str_pad($claimNumber->number, 9, "0", STR_PAD_LEFT);
+					$claim->created_by = $user->first_name;
+				}
+				
 				$claim->save();
 				$claim->claimProducts()->saveMany($claimProductAll);
 				
-				$claimNumber->number += 1;
-				$claimNumber->save();
+				foreach ($claim->claimProducts as $claimProduct)
+				{
+					if (count($claimProduct->claimProductActions) == 0)
+					{
+						$claimProductAction = new ClaimProductAction;
+						$claimProductAction->claim_id = $claim->id;
+						$claimProductAction->created_by = $user->first_name;
+						$claimProductAction->updated_by = $user->first_name;
+						
+						$claimProductActions = array();
+						$claimProductActions[] = $claimProductAction;
+						
+						$claimProduct->claimProductActions()->saveMany($claimProductActions);
+					}
+				}
 				
 				$request->session()->forget($this->SESSION_CLAIM_KEY);
 				$request->session()->forget($this->SESSION_SELECTED_PRODUCT_KEY);
@@ -155,7 +175,10 @@ class ClaimsWorkFlowController extends Controller
 				if ($request->claimId)
 				{
 					$claim = Claim::find($request->claimId);
-					$claimProductAll = ClaimProduct::where('claim_id', $claim->id)->get();
+					//$claimProductAll = ClaimProduct::where('claim_id', $claim->id)->get();					
+					$claimProductAll = $claim->claimProducts;
+					
+					Log::info('Total Claim Product: ' . count($claim->claimProducts));
 					
 					$request->session()->put($this->SESSION_CLAIM_KEY, $claim);
 					$request->session()->put($this->SESSION_SELECTED_PRODUCT_KEY, $claimProductAll);

@@ -67,7 +67,7 @@
 								<div class="form-group">
 									<label class="col-lg-2 control-label text-info">อาการเสีย</label>
 									<div class="col-lg-6">
-										<input type="text" class="form-control" id="claimDetail" name="claimDetail" placeholder="อาการเสีย" value="{{ $claimProduct->claim_detail }}">
+										<input type="text" class="form-control" id="claimDetail" name="claimDetail" placeholder="อาการเสีย" value="{{ $claimProduct->claim_detail }}" required>
 									</div>
 								</div>
 							</div>
