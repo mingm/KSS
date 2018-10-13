@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ClaimProductAction;
 use Illuminate\Database\Eloquent\Model;
 
 class ClaimProduct extends Model
@@ -12,15 +13,6 @@ class ClaimProduct extends Model
      * @var string
      */
     protected $table = 'claims_product';
-	
-	/**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'claim_id', 'product_id', 'type', 'serial_number', 'claim_reason', 'package_bundle'
-    ];
 	
 	public $timestamps = false;
 	
@@ -36,5 +28,16 @@ class ClaimProduct extends Model
 	
 	public function claimProductActions() {
         return $this->hasMany('App\ClaimProductAction');
+	}
+	
+	public function latestClaimProductAction() {
+		
+		$query = ClaimProductAction::select();
+		$query->where('claim_id', $this->claim_id);
+		$query->where('claim_product_id', $this->id);
+		
+		$claimProductAction = ClaimProductAction::find($query->max('id'));
+		
+        return $claimProductAction;
 	}
 }

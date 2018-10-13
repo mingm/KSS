@@ -175,10 +175,7 @@ class ClaimsWorkFlowController extends Controller
 				if ($request->claimId)
 				{
 					$claim = Claim::find($request->claimId);
-					//$claimProductAll = ClaimProduct::where('claim_id', $claim->id)->get();					
 					$claimProductAll = $claim->claimProducts;
-					
-					Log::info('Total Claim Product: ' . count($claim->claimProducts));
 					
 					$request->session()->put($this->SESSION_CLAIM_KEY, $claim);
 					$request->session()->put($this->SESSION_SELECTED_PRODUCT_KEY, $claimProductAll);
