@@ -19,9 +19,9 @@ class CreateClaimsProductTable extends Migration
 			$table->integer('product_id')->unsigned();
             $table->string('serial_number');
             $table->string('claim_detail');
-            $table->string('specific_detail');
-            $table->string('package_bundle');
-            $table->string('note');					
+            $table->string('specific_detail')->nullable();
+            $table->string('package_bundle')->nullable();
+            $table->string('note')->nullable();				
             $table->string('type')->nullable();		
 			$table->foreign('claim_id')->references('id')->on('claims');
 			$table->foreign('product_id')->references('id')->on('products');

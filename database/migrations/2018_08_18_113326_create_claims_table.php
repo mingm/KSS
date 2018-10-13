@@ -15,7 +15,7 @@ class CreateClaimsTable extends Migration
     {
         Schema::create('claims', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('claim_code', 15)->nullable();
+            $table->string('claim_code', 15);
 			$table->integer('customer_id')->unsigned();
 			$table->enum('status', array('New', 'In Progress', 'Completed'))->default('New');
 			//$table->integer('claim_status_id')->unsigned();
