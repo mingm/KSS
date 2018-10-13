@@ -12,5 +12,4 @@ class ClaimProductAction extends Model
      * @var string
      */
     protected $table = 'claims_product_action';
-	
 }
