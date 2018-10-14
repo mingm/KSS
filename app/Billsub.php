@@ -23,4 +23,8 @@ class Billsub extends Model
         'vendor_id', 'status', 'created_by', 'updated_by'
     ];
 	
+	public function billsubProducts() {
+        return $this->hasMany('App\BillsubProduct');
+	}
+	
 }

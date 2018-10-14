@@ -70,7 +70,7 @@
                             <a href="{{ url('claims') }}"><i class="fa fa-plus-circle"></i> เพิ่มรายการเคลมสินค้า</a>
                         </li>
                         <li>
-                            <a href="send-vendors.html"><i class="fa fa-plus-square"></i> เพิ่มรายการส่งเคลมสินค้า</a>
+                            <a href="{{ url('billSubs') }}"><i class="fa fa-plus-square"></i> เพิ่มรายการส่งเคลมสินค้า</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> ระบบข้อมูลลูกค้า<span class="fa arrow"></span></a>

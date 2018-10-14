@@ -15,6 +15,7 @@ class CreateBillsubTable extends Migration
     {
         Schema::create('billsub', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('billsub_code', 15);
 			$table->integer('vendor_id')->unsigned();
 			$table->enum('status', array('New', 'In progress', 'Completed'))->default('New');
 			//$table->integer('status_id')->unsigned();

@@ -19,11 +19,12 @@ class Vendor extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'details', 'phone'
+        'name', 'details', 'phone', 'lastGenerateBillSub'
     ];
 	
     /**
      * Set timestamps off
      */
     public $timestamps = false;
+	
 }
