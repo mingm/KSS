@@ -17,11 +17,10 @@ class CreateBillsubProductTable extends Migration
             $table->increments('id');
 			$table->integer('billsub_id')->unsigned();
 			$table->integer('claim_id')->unsigned();
-			$table->integer('product_id')->unsigned();
-            $table->string('serial_number');
+			$table->integer('claim_product_id')->unsigned();
 			$table->foreign('billsub_id')->references('id')->on('billsub');
 			$table->foreign('claim_id')->references('id')->on('claims');
-			$table->foreign('product_id')->references('id')->on('products');
+			$table->foreign('claim_product_id')->references('id')->on('claims_product');
         });
     }
 

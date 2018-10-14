@@ -18,6 +18,7 @@ class CreateVendorsTable extends Migration
             $table->string('name');
             $table->string('details');
             $table->string('phone');
+			$table->date('lastGenerateBillSub');
         });
     }
 

@@ -137,8 +137,9 @@ class ClaimsWorkFlowController extends Controller
 				
 				if (!isset($claim->claim_code)) {
 					$claimNumber = KSSNumber::where('key', $this->CONS_CLAIM_NUMBER_KEY)->first();
-					$claimNumber->number += 1;
-					$claimNumber->save();
+					//$claimNumber->number += 1;
+					//$claimNumber->save();
+					$claimNumber->increment('number', 1);
 					$claim->claim_code = 'C' . str_pad($claimNumber->number, 9, "0", STR_PAD_LEFT);
 					$claim->created_by = $user->first_name;
 				}
