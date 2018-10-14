@@ -14,3 +14,11 @@ After check out source code
 5. run command at root folder, command is "php artisan passport:install"
 6. run command at root folder, command is "php artisan db:seed"
 7. browse the website
+
+Bill Sub Module:
+how to generate the bill sub
+ - Grap all new claim products under vendor by lastGenerateBillSub (In vendor table)
+ - Update all new clime products to "Transfer TO dealer"
+ - Update lastGenerateBillSub to current date
+
+To run the bill sub --expected to run by schedule (not configured yet), now manual run by command "php artisan schedule:run" (create claim first).
