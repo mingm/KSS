@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Billsub;
 use App\BillsubProduct;
+use App\Vendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BillSubsController extends Controller
 {
@@ -53,4 +56,19 @@ class BillSubsController extends Controller
 		
 		return view('billSubs.print', ['billSub' => $billSub, 'results' => $results]);
     }
+	
+	public function getGenerate()
+	{
+		$vendors = Vendor::all();
+		return view('billSubs.generate', ['vendors' => $vendors]);
+	}
+	
+	public function generate(Request $request){
+		
+		Log::info("vendor id: ". $request->vendorId);
+		
+		Artisan::queue('command:BillSubs', ['--id' => $request->vendorId]);
+		
+		return redirect()->action('BillSubsController@index');
+	}
 }

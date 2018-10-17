@@ -17,7 +17,7 @@
 				<div class="panel-heading">
 					<h4>รายการส่งเคลม</h4>
 				</div>
-					<div class="panel-body">
+				<div class="panel-body">
 					
 					<div class="panel-group">
 						<div class="col-md-8"></div>
@@ -37,6 +37,7 @@
 								<tr>
 									<th class="text-center" style="width: 50px;">ลำดับ</th>
 									<th>เลขที่บิลส่งผู้จำหน่าย</th>
+									<th>ผู้จำหน่าย</th>
 									<th>สถานะ</th>
 									<th class="text-center" style="width: 100px;">คำสั่ง</th>
 								</tr>
@@ -46,6 +47,7 @@
 							<tr>
 								<td class="text-center">{{ $loop->iteration + (($billSubs->currentPage() - 1) * $billSubs->perPage()) }}</td>
 								<td>{{ $billSub->billsub_code}}</td>
+								<td>{{ $billSub->vendor->name }}</td>
 								@if ($billSub->status === 'Completed')
 								<td><label class="label label-danger">เรียบร้อย</label></td>
 								@else
@@ -61,14 +63,18 @@
 							</tbody>
 						</table>
 					</div>
+					
+	
+					<div class="row horizontal">
+						<div class="col-lg-12">
+							<ul class="pagination pull-left">
+								<li><a href="{{ url('billSubs/generate') }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> สร้างรายการสินค้าส่งเคลมผู้นำเข้า</a></li>
+							</ul>
+							{{ $billSubs->links('shared.pagination') }}
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	
-	<div class="row horizontal">
-		<div class="col-lg-12">
-			{{ $billSubs->links('shared.pagination') }}
 		</div>
 	</div>
 

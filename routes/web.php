@@ -38,4 +38,6 @@ Route::get('/claims/create', 'ClaimsWorkFlowController');
 Route::post('/claims/create', 'ClaimsWorkFlowController');
 
 Route::get('/billSubs', 'BillSubsController@index')->name('billSubs');
+Route::get('/billSubs/generate/', 'BillSubsController@getGenerate');
 Route::get('/billSubs/print/{id}', 'BillSubsController@printBillSub')->name('billsubprint');
+Route::post('/billSubs/generate/', 'BillSubsController@generate');

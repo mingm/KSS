@@ -22,7 +22,7 @@ class BillSubsGenerator extends Command
      *
      * @var string
      */
-    protected $signature = 'command:BillSubs';
+    protected $signature = 'command:BillSubs {--id=}';
 
     /**
      * The console command description.
@@ -50,15 +50,17 @@ class BillSubsGenerator extends Command
     {
         //
 		Log::info('Bill Sub Generator');
+		$vendorId = $this->option('id');
+		Log::info('Vendor id: '. $vendorId);
 		
-		$vendors = Vendor::all();
+		$query = Vendor::select();
+		
+		if ($vendorId) $query->where('id', '=', $vendorId);
+		
+		$vendors = $query->get();
 		
 		foreach($vendors as $vendor)
-		{
-			$claimNumber = KSSNumber::where('key', $this->CONS_BILLSUB_NUMBER_KEY)->first();
-			$claimNumber->increment('number', 1);
-			$billsubCode = 'SD' . str_pad($claimNumber->number, 8, "0", STR_PAD_LEFT);
-			
+		{	
 			$query = DB::table('claims_product');
 			$query->join('claims', 'claims.id', '=', 'claims_product.claim_id');
 			$query->join('claims_product_action', function($join) {
@@ -74,21 +76,10 @@ class BillSubsGenerator extends Command
 			$query->select('claims.id as claim_id', 'claims_product.serial_number', 'products.id as product_id', 'claims_product.id AS claims_product_id', 'claims_product_action.id as claims_product_action_id');
 			$results = $query->get();			
 			
-			$billSub = new BillSub;
-			$billSub->billsub_code = $billsubCode;
-			$billSub->vendor_id = $vendor->id;
-			$billSub->created_by = 'SYSTEM';
-			$billSub->updated_by = 'SYSTEM';
-			
 			$billSubProductAll = array();
 			
 			foreach ($results as $result)
 			{				
-				$text  = 'Serial Number: ' . $result->serial_number;
-				$text .= ' Product Id: ' . $result->product_id;
-				$text .= ' Claim Id: ' . $result->claim_id;
-				Log::info($text);
-				
 				$billSubProduct = new BillsubProduct;
 				$billSubProduct->claim_id = $result->claim_id;
 				$billSubProduct->claim_product_id = $result->claims_product_id;
@@ -102,6 +93,16 @@ class BillSubsGenerator extends Command
 			}
 			if (count($billSubProductAll) > 0)
 			{
+				$claimNumber = KSSNumber::where('key', $this->CONS_BILLSUB_NUMBER_KEY)->first();
+				$claimNumber->increment('number', 1);
+				$billsubCode = 'SD' . str_pad($claimNumber->number, 8, "0", STR_PAD_LEFT);
+			
+				$billSub = new BillSub;
+				$billSub->billsub_code = $billsubCode;
+				$billSub->vendor_id = $vendor->id;
+				$billSub->created_by = 'SYSTEM';
+				$billSub->updated_by = 'SYSTEM';
+				
 				$billSub->save();
 				$billSub->billsubProducts()->saveMany($billSubProductAll);
 				

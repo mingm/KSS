@@ -27,4 +27,9 @@ class Billsub extends Model
         return $this->hasMany('App\BillsubProduct');
 	}
 	
+	public function vendor()
+    {
+        return $this->hasOne('App\Vendor', 'id', 'vendor_id');
+    }
+	
 }
