@@ -12,25 +12,21 @@ class BillsubProduct extends Model
      * @var string
      */
     protected $table = 'billsub_product';
-	
-	/**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'billsub_id', 'product_id', 'serial_number'
-    ];
-	
+		
 	public $timestamps = false;
-	
-	public function product()
-    {
-        return $this->hasOne('App\Product', 'id', 'product_id');
-    }
 
     public function billsub()
     {
         return $this->belongsTo('App\Billsub');
     }
+	
+	public function claim()
+	{
+		return $this->hasOne('App\Claim', 'id', 'claim_id');
+	}
+	
+	public function claimProduct()
+	{
+		return $this->hasOne('App\ClaimProduct', 'id', 'claim_product_id');
+	}
 }

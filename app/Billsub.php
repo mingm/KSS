@@ -27,6 +27,16 @@ class Billsub extends Model
         return $this->hasMany('App\BillsubProduct');
 	}
 	
+	public function allReturned() {
+		
+		foreach ($this->billsubProducts as $billsubProduct)
+		{
+			if ($billsubProduct->claimProduct->latestClaimProductAction()->status === 'Transfer to dealer')
+				return false;
+		}		
+		return true;
+	}
+	
 	public function vendor()
     {
         return $this->hasOne('App\Vendor', 'id', 'vendor_id');

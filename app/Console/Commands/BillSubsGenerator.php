@@ -86,8 +86,12 @@ class BillSubsGenerator extends Command
 				
 				$billSubProductAll[] = $billSubProduct;
 				
-				$claimProductAction = ClaimProductAction::find($result->claims_product_action_id);
+				$claimProductAction = new ClaimProductAction;
+				$claimProductAction->claim_id = $result->claim_id;
+				$claimProductAction->claim_product_id = $result->claims_product_id;
 				$claimProductAction->status = 'Transfer to dealer';
+				$claimProductAction->created_by = 'SYSTEM';
+				$claimProductAction->updated_by = 'SYSTEM';
 				$claimProductAction->save();
 				
 			}

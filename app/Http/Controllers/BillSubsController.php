@@ -7,6 +7,7 @@ use App\BillsubProduct;
 use App\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -70,5 +71,17 @@ class BillSubsController extends Controller
 		Artisan::queue('command:BillSubs', ['--id' => $request->vendorId]);
 		
 		return redirect()->action('BillSubsController@index');
+	}
+	
+	public function moveToDealer($id) {
+		
+		$user = Auth::user();
+		
+		$billSub = Billsub::find($id);
+		$billSub->status = 'In progress';
+		$billSub->updated_by = $user->first_name;
+		$billSub->save();		
+		
+		return view('billSubs.index', ['billSubs' => BillSub::paginate(10)]);
 	}
 }
