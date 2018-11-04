@@ -50,15 +50,10 @@
 								<td>{{ $billSub->vendor->name }}</td>
 								<td>{{ $billSub->status }}</td>	
 								<td class="text-center">
-									<form class="form-horizontal" action="{{ url('/billSubs/moveToDealer/' . $billSub->id) }}" method="POST">
-									@csrf
 									<div class="btn-group">
 										<a href="{{ url('billSubs/print/' . $billSub->id ) }}" target="_blank" class="btn btn-xs btn-info" title="Print"><i class="glyphicon glyphicon-eye-open"></i></a>
-									@if ($billSub->status === 'New')
-										<button type="submit" class="btn btn-xs btn-success" title="Move to dealer"><i class="fa fa-arrow-circle-right"></i></button>
-									@endif
+										<a href="{{ url('/home/dashboard/dealer/' . $billSub->id ) }}" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-log-in"></i></a>
 									</div>
-									</form>
 								</td>
 							</tr>
 							@endforeach
@@ -69,9 +64,6 @@
 	
 					<div class="row horizontal">
 						<div class="col-lg-12">
-							<ul class="pagination pull-left">
-								<li><a href="{{ url('billSubs/generate') }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> สร้างรายการสินค้าส่งเคลมผู้นำเข้า</a></li>
-							</ul>
 							{{ $billSubs->links('shared.pagination') }}
 						</div>
 					</div>

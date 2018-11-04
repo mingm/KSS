@@ -30,6 +30,17 @@ class Claim extends Model
 	public function claimProducts() {
         return $this->hasMany('App\ClaimProduct');
 	}
+	
+	public function allReturned() {
+		
+		foreach ($this->claimProducts as $claimProduct)
+		{
+			if (strcmp($claimProduct->latestClaimProductAction()->status, 'returned') != 0)
+				return false;
+		}
+		
+		return true;
+	}
 
     public static function boot()
     {
