@@ -10,6 +10,8 @@ After check out source code
 1. copy .env to root folder (.env file available at google drive)
 2. Drop all tables (SQL tool to remove all tables)
 3. run command at root folder, command is "composer update"
+3.1. run command at root folder, command is "vendor\bin\upgrade-carbon.bat", just once (next time no need)
+3.2. run command at root folder, command is "composer update", just once (next time no need
 4. run command at root folder, command is "php artisan migrate"
 5. run command at root folder, command is "php artisan passport:install"
 6. run command at root folder, command is "php artisan db:seed"

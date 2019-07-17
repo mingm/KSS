@@ -53,6 +53,12 @@ Route::post('/home/dashboard/dealer/{id}', 'DashboardController@moveToCustomer')
 Route::get('/home/dashboard/return', 'DashboardController@return');
 Route::post('/home/dashboard/return', 'DashboardController@returned');
 
+Route::get('/reports', 'ReportByMonthController@index')->name('reports');
+Route::post('/reports/search', 'ReportByMonthController@search');
+Route::get('/reportMonthYear', 'ReportByMonthController@reportMonthYear')->name('reportMonthYear');
+Route::post('/reportMonthYear/search', 'ReportByMonthController@reportMonthYearSearch');
+
+
 
 
 

@@ -25,6 +25,8 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 	
+	<!-- Morris Charts CSS -->
+    <link href="{{ asset('vendor/morrisjs/morris.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -106,13 +108,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ระบบรายงาน<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">รายการ 1</a>
+                                    <a href="{{ url('reports') }}">รายงานสรุป</a>
                                 </li>
                                 <li>
-                                    <a href="#">รายการ 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">รายการ 3</a>
+                                    <a href="{{ url('reportMonthYear') }}">รายงานเปรียบเทียบ/เดือน</a>
                                 </li>
                             </ul>
                         </li>
