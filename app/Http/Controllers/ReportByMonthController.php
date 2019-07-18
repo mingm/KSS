@@ -59,7 +59,7 @@ class ReportByMonthController extends Controller
 				$query->orderBy('total', 'DESC');
 				$results = $query->paginate(10);
 				
-				return view('reports.report_month_result', ['results' => $results]);
+				return view('reports.report_month_result', ['results' => $results, 'report_id' => $request->report_id, 'month_id' => $request->month_id, 'year_id' => $request->year_id]);
 			}
 			default:
 			{

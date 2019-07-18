@@ -21,7 +21,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									@include('shared.customerform', ['customer' => $customer, 'method' => 'POST'])
+									@include('shared.customerform', ['customer' => $customer, 'method' => $method])
 								</div>
 							</div>
 						</div>

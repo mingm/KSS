@@ -155,6 +155,9 @@ class CategoriesController extends Controller
 	private function getLevel($catId) {
 		$category = Category::find($catId);
 		
+		if ($category->parent_id == 0)
+			return 1;
+		
 		return $this->findRoot($category, 1) + 1;
 	}
 	

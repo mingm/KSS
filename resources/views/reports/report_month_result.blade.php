@@ -57,7 +57,7 @@
 						<li><a href="{{ url('/reports') }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i>ย้อนกลับ</a></li>
 					</ul>
 					
-					{{ $results->links('shared.pagination') }}
+					{{ $results->appends(['report_id' => $report_id, 'month_id' => $month_id, 'year_id' => $year_id])->links('shared.pagination') }}
 				</div>
 			</div>
 			
